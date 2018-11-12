@@ -2,14 +2,14 @@ import cv2
 import numpy as np
 
 # Reading the images from the location
-image1 = cv2.imread("C:/Users/roopa/Pictures/proj2_cse573/data/mountain1.jpg", 1)
-image2 = cv2.imread("C:/Users/roopa/Pictures/proj2_cse573/data/mountain2.jpg", 1)
+image1 = cv2.imread("mountain1.jpg", 1)
+image2 = cv2.imread("mountain2.jpg", 1)
 
-task1_sift1_img_path = "C:/Users/roopa/Pictures/proj2_cse573/output/task1_sift1"+".jpg"
-task1_sift2_img_path = "C:/Users/roopa/Pictures/proj2_cse573/output/task1_sift2"+".jpg"
-matches_knn_img_path = "C:/Users/roopa/Pictures/proj2_cse573/output/task1_matches_knn"+".jpg"
-task1_matches_img_path = "C:/Users/roopa/Pictures/proj2_cse573/output/task1_matches"+".jpg"
-task1_pano_img_path = "C:/Users/roopa/Pictures/proj2_cse573/output/task1_pano"+".jpg"
+task1_sift1_img_path = "/output/task1_sift1"+".jpg"
+task1_sift2_img_path = "/output/task1_sift2"+".jpg"
+matches_knn_img_path = "/output/task1_matches_knn"+".jpg"
+task1_matches_img_path = "/output/task1_matches"+".jpg"
+task1_pano_img_path = "/output/task1_pano"+".jpg"
 
 sift = cv2.xfeatures2d.SIFT_create()
 key_point1, descriptor1 = sift.detectAndCompute(image1, None)
@@ -18,7 +18,8 @@ key_point2, descriptor2 = sift.detectAndCompute(image2, None)
 task1_sift1 = cv2.drawKeypoints(image1, key_point1, image1, flags=2)
 task1_sift2 = cv2.drawKeypoints(image2, key_point2, image2, flags=2)
 
-np.set_printoptions(suppress=True)
+# To supress the printed values printing floating point numbers using fixed point notation
+np.tset_printoptions(suppress=True)
 
 # Using DescriptorMatcher knnMatch() to obtain all matches between the two images
 bf = cv2.BFMatcher();
